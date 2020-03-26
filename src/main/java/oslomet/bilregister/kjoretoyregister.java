@@ -8,7 +8,7 @@ public class kjoretoyregister {
     private String   bilmerke;
     private String   biltype;
 
-    public kjoretoyregister( String personnummer,String   navn, String   adresse, String   kjenetegn, String   bilmerke, String   biltype ){
+    public kjoretoyregister( String personnummer,String navn, String adresse, String kjenetegn, String bilmerke, String biltype ){
         this.personnummer = personnummer;
         this.navn = navn;
         this.adresse = adresse;
