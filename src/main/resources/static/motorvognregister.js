@@ -3,7 +3,6 @@
 //Document ready function
 $(function() {  // kjøres når dokumentet er ferdig lastet
     hentAlleBilmerker();
-    hentAlleBilTyper();
 });
 //Bilmerke dropdown
 function hentAlleBilmerker() {
@@ -18,19 +17,54 @@ function hentAlleBilmerker() {
     ut += "</select>";
     $("#bilmerkene").html(ut);
 }
-
-// typeBil(modell) dropdown
-function hentAlleBilTyper() {
-    $.get("/hentBiltyper", function(typer) {
-        formaterBilTyper(typer);
-    });
-}function formaterBilTyper(typer) {
-    let ut = "<select id='valgtBilType'>";
-    for(const BilType of typer) {
-        ut += "<option value='" + BilType.typebil+"'>" + BilType.typebil+ "</option>";
+// sjekerr hvilke merke som er vagt og gir riktig type der etter
+function merke() {
+    console.log($("#valgtBil").val());
+    if ($("#valgtBil").val() === ('Audi')){
+        Audi()
     }
-    ut += "</select>";
-    $("#biltypene").html(ut);
+    else {
+        volvo()
+    }
+
+}
+
+function Audi() {
+    hentAlleBilTyperA();
+    // Audi
+// typeBilA(modell) dropdown
+    function hentAlleBilTyperA() {
+        $.get("/hentBiltyperA", function(typer) {
+            formaterBilTyperA(typer);
+        });
+    }function formaterBilTyperA(typer) {
+        let ut = "<select id='valgtBilType'>";
+        for(const BilTypeA of typer) {
+            ut += "<option value='" + BilTypeA.typebil+"'>" + BilTypeA.typebil+ "</option>";
+        }
+        ut += "</select>";
+        $("#biltypene").html(ut);
+    }
+
+}
+
+function volvo() {
+    hentAlleBilTyperV()
+    //Volvo
+// typeBilV(modell) dropdown
+    function hentAlleBilTyperV() {
+        $.get("/hentBiltyperV", function(typer) {
+            formaterBilTyperV(typer);
+        });
+    }function formaterBilTyperV(typer) {
+        let ut = "<select id='valgtBilType'>";
+        for(const BilTypeV of typer) {
+            ut += "<option value='" + BilTypeV.typebil+"'>" + BilTypeV.typebil+ "</option>";
+        }
+        ut += "</select>";
+        $("#biltypene").html(ut);
+    }
+
 }
 
 // tar verdiene og sender til serveren
@@ -43,6 +77,7 @@ function regKjoretøy() {
         bilmerke: $("#valgtBil").val(),
         biltype: $("#valgtBilType").val()
     };
+
     $.post("/lagre",kjoretoyregister, function (){
         hentAlle();
     });

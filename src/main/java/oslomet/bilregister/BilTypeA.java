@@ -1,10 +1,10 @@
 package oslomet.bilregister;
 
-public class BilType {
+public class BilTypeA {
         private String typebil;
 
 
-        public BilType(String typebil) {
+        public BilTypeA(String typebil) {
             this.typebil = typebil;
         }
 
