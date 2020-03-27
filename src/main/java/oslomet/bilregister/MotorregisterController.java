@@ -23,45 +23,35 @@ public class MotorregisterController {
     @GetMapping("hentBilmerker")
     public List<BilMerke> hentAlleBilmerker() {
         List<BilMerke> listBiler= new ArrayList<>();
-        listBiler.add(new BilMerke ("Audi", "A4"));
-        listBiler.add(new BilMerke ("Bmw", "A8"));
-        listBiler.add(new BilMerke ("Ford", "A8"));
-        listBiler.add(new BilMerke ("Opel", "A8"));
-        listBiler.add(new BilMerke ("Subaru", "A8"));
-        listBiler.add(new BilMerke ("Volvo", "T8"));
+        listBiler.add(new BilMerke ("Audi"));
+        listBiler.add(new BilMerke ("Bmw"));
+        listBiler.add(new BilMerke ("Ford"));
+        listBiler.add(new BilMerke ("Opel"));
+        listBiler.add(new BilMerke ("Subaru"));
+        listBiler.add(new BilMerke ("Volvo"));
         return listBiler;
     }
-
-
-
 
     @GetMapping("hentBiltyper")
     public List<BilType> hentAlleBilTyper() {
         List<BilType> listBityper= new ArrayList<>();
-        listBityper.add(new BilType("A4", "Audi"));
-        listBityper.add(new BilType("A5", "Audi"));
-        listBityper.add(new BilType("A6", "Audi"));
-        listBityper.add(new BilType("Z4", "Bmw"));
-        listBityper.add(new BilType("M5", "Bmw"));
-        listBityper.add(new BilType("escort", "Ford"));
-        listBityper.add(new BilType("ascona", "Opel"));
-        listBityper.add(new BilType("legacy", "Subaru"));
-        listBityper.add(new BilType("outback", "Subaru"));
-        listBityper.add(new BilType("T8", "Volvo"));
-        listBityper.add(new BilType("XC70", "Volvo"));
+        listBityper.add(new BilType("A4"));
+        listBityper.add(new BilType("A5"));
+        listBityper.add(new BilType("A6"));
+        listBityper.add(new BilType("Z4"));
+        listBityper.add(new BilType("M5"));
+        listBityper.add(new BilType("escort"));
+        listBityper.add(new BilType("ascona"));
+        listBityper.add(new BilType("legacy"));
+        listBityper.add(new BilType("outback"));
+        listBityper.add(new BilType("T8"));
+        listBityper.add(new BilType("XC70"));
         return listBityper;
     }
-
-
-
 
     @GetMapping("/slettAllekjoretoy")
     public void slettArrey(){
         allekjoretoy.clear ();
     }
-
-
-
-
-    }
+}
 

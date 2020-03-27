@@ -1,28 +1,11 @@
-/*$(function () {
-    hentBilmerker();
-});
-function hentBilmerker() {
-    $.get("/hentBilmerker", function (Bilmerker) {
-        formaterBilmerker(Bilmerker);
 
-    });
-}
-function formaterBilmerker(Bilmerker) {
-    let ut ="<select id=ValgtMerke>";
-    for(const Bilmerke of Bilmerker){
-        ut+="<option value='"+Bilmerke.merke+"'>"+"</option>";
-    }
-    ut+= "</select>";
-     $("bilmerkeInn").html(ut)
 
-}
-
- */
-//Bilmerke dropdown
+//Document ready function
 $(function() {  // kjøres når dokumentet er ferdig lastet
     hentAlleBilmerker();
     hentAlleBilTyper();
 });
+//Bilmerke dropdown
 function hentAlleBilmerker() {
     $.get("/hentBilmerker", function(merker) {
         formaterBiler(merker);
@@ -50,6 +33,7 @@ function hentAlleBilTyper() {
     $("#biltypene").html(ut);
 }
 
+// tar verdiene og sender til serveren
 function regKjoretøy() {
     const kjoretoyregister ={
         personnummer: $("#personnummerInn").val(),
@@ -63,12 +47,13 @@ function regKjoretøy() {
         hentAlle();
     });
 
+   // blanker input felter
     $("#personnummerInn").val("");
     $("#navInn").val("");
     $("#adresseInn").val("");
     $("#kjenetegnInn").val("");
-    $("#bilmerkeInn").val("");
-    $("#biltypeInn").val("");
+    $("#valgtBil").val("");
+    $("#valgtBilType").val("");
 }
 function hentAlle() {
     $.get("/hentAlle", function (data) {
@@ -76,6 +61,7 @@ function hentAlle() {
     });
 
 }
+// Tabbel header for kjøretoyregister
 function formaterData(kjoretoyregistere) {
     let ut = "<table class='table table-striped'>" +
             "<tr>" +
@@ -86,6 +72,7 @@ function formaterData(kjoretoyregistere) {
             "<th>Merke</th>" +
             "<th>Type</th>" +
              "</tr>";
+    // luper igjennom  Arreyet for kjoretoyregister med en for lup
     for(const kjoretoyregister of kjoretoyregistere){
         ut+=
             "<tr>" +
@@ -100,6 +87,8 @@ function formaterData(kjoretoyregistere) {
     ut += "</table>";
     $("#kjoretoyregisterut").html(ut);
 }
+
+// function som tommer arreyet
 function slettArrey() {
     $.get("/slettAllekjoretoy",function () {
         hentAlle()
