@@ -1,5 +1,3 @@
-
-
 //Document ready function
 $(function() {  // kjøres når dokumentet er ferdig lastet
     hentAlleBilmerker();
